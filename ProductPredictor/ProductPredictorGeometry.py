@@ -73,7 +73,7 @@ y_test_norm = y_test_norm.reshape(1, -1)
 NN = Network(N_input = Data.N_features, N_output = y_train_norm.shape[1], N_steps = Config.N_steps_coords,   \
 label=x_train_norm, data=y_train_norm, PINN=False, variables=coords, print_data=False)
 NN.init_model(Config.layers_coords)
-NN.set_optimizer(Config.initial_learning_rate_coords, Config.decay_steps_coords, Config.decay_rate_coords)
+NN.set_optimizer(Config.initial_learning_rate_coords, 1, 1)
 
 #train network
 NN.train(get_loss, y_test_norm, x_test_norm, y_interval)
