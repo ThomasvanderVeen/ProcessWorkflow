@@ -83,7 +83,7 @@ for i in range(N_elements):
     NN = Network(N_input=Data.N_features, N_output=len(variables)*N_points_in_element, N_steps=Config.N_steps,   \
     label=x_train_norm, data=y_train_norm, PINN=False, variables=variables, print_data=True)
     NN.init_model(Config.layers)
-    NN.set_optimizer(Config.initial_learning_rate, Config.decay_steps, Config.decay_rate)
+    NN.set_optimizer(Config.initial_learning_rate, 1, 1)
 
     #train DNN
     NN.train(get_loss, y_test_norm, x_test_norm, Data.interval)
@@ -92,7 +92,7 @@ for i in range(N_elements):
     PINN = Network(N_input=Data.N_features, N_output=len(variables)*N_points_in_element, N_steps=Config.N_steps,   \
     label=x_train_norm, data=y_train_norm, PINN=True, variables=variables, print_data=True)
     PINN.init_model(Config.layers)
-    PINN.set_optimizer(Config.initial_learning_rate, Config.decay_steps, Config.decay_rate)
+    PINN.set_optimizer(Config.initial_learning_rate, 1, 1)
 
     #train PINN
     PINN.train(get_loss, y_test_norm, x_test_norm, Data.interval)
