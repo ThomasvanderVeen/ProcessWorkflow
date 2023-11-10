@@ -7,7 +7,7 @@
 
 
 ## Introduction
-Finite element analysis (FEA) data is combined with artificial neural networks (ANNs) and physics informed neural networks (PINNs) in the process workflow.
+Finite element analysis (FEA) data is combined with artificial neural networks (ANNs) and physics-informed neural networks (PINNs) in the process workflow.
 The process workflow (written in Python) is a six-step workflow developed to optimize root cause detection in defective end products and works as follows:
 
 1. Train and validate the parameter predictor.
@@ -26,12 +26,12 @@ The process workflow (written in Python) is a six-step workflow developed to opt
 
 
 ## Start-guide
-The Process Workflow is written in python (3.10) on a windows 10 PC not utilizing the graphics card.
+The Process Workflow is written in Python (3.10) on a Windows 10 PC not utilizing the graphics card.
 
 To run the code, the following files are necessary:
   1. .issn (calculated parameters in each node) & .mshn (node information) files of each simulation in the 'Simulations' folder provided by MSC marc (or other FEA software that provides these files)
   2. .ida (material model) file in the 'Variation_and_material/material' folder.
-  3. .xslx (variaton scheme) file in the 'Variation_and_material/variation_scheme' folder.
+  3. .xslx (variation scheme) file in the 'Variation_and_material/variation_scheme' folder.
 
 A few examples are already provided to allow the user to run the code as is.
 
@@ -46,17 +46,17 @@ All models are saved in .h5 format
 There is a config file in Both "ProcessPredictor" & "ProductPredictor" folders, which allows the user to change parameters.
 
 [General]
-Save_data => True -> will save data (slower), False -> will use saved data (quicker)
-Last_step_name => Name of last step in FEA, simulations with this name will be imported (often the last step)
-Boundary_index => The amount of total simulations (n_test + n_train)
-use_variable_index => specify which columns of the variation scheme should be used
+  * Save_data => True -> will save data (slower), False -> will use saved data (quicker)
+  * Last_step_name => Name of the last step in FEA, simulations with this name will be imported (often the last step)
+  * Boundary_index => The amount of total simulations (n_test + n_train)
+  * use_variable_index => specify which columns of the variation scheme should be used
 
 [Network]
-Architecture => number of layers and neurons in each layer
-N_epochs => the number of maximum epochs during the learning stage
-Learning_rate => the learning rate for the ANN
-Testing_ratio => the ratio between the number of testing and training simulations
+  * Architecture => number of layers and neurons in each layer
+  * N_epochs => the number of maximum epochs during the learning stage
+  * Learning_rate => the learning rate for the ANN
+  * Testing_ratio => the ratio between the number of testing and training simulations
 
 [PINN]
-N_collocation_points => the amount of collocation points for the physics informed neural network (PINN)
+  * N_collocation_points => the number of collocation points for the physics-informed neural network (PINN)
 
